@@ -2,12 +2,13 @@ package com.example.adminapp.Model;
 
 public class AdminOrders {
 
-    private String firstname, lastname, phone, address, city, State, date, time, totalAmount;
+    private String firstname, lastname, phone, address, city, State, date, time;
+           private int  totalAmount;
 
     public AdminOrders() {
     }
 
-    public AdminOrders(String firstname, String lastname, String phone, String address, String city, String state, String date, String time, String totalAmount) {
+    public AdminOrders(String firstname, String lastname, String phone, String address, String city, String state, String date, String time, int totalAmount) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
@@ -83,11 +84,11 @@ public class AdminOrders {
         this.time = time;
     }
 
-    public String getTotalAmount() {
+    public int getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(String totalAmount) {
+    public void setTotalAmount(int totalAmount) {
         this.totalAmount = totalAmount;
     }
 }
