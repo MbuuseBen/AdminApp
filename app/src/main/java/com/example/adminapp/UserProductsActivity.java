@@ -1,7 +1,9 @@
 package com.example.adminapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 import java.text.DecimalFormat;
 
@@ -46,7 +48,16 @@ public class UserProductsActivity extends AppCompatActivity {
         cartListRef  = FirebaseDatabase.getInstance().getReference().child("Cart List")
                 .child("Orders View").child(userID).child("Products");
 
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.topAppBar);
+        mToolbar.setTitle("Ordered Products");
+        setSupportActionBar(mToolbar);
 
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -62,7 +73,7 @@ public class UserProductsActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull @NotNull CartViewHolder holder, int i, @NonNull @NotNull Cart model) {
+            protected void onBindViewHolder(@NonNull  CartViewHolder holder, int i, @NonNull  Cart model) {
 
                 holder.txtProductQuantity.setText("Quantity : " + model.getQuantity());
                 holder.txtProductPrice.setText("Price: " + (new DecimalFormat("#,###")).format(Integer.valueOf(model.getPrice())));
@@ -73,9 +84,9 @@ public class UserProductsActivity extends AppCompatActivity {
             }
 
             @NonNull
-            @NotNull
+
             @Override
-            public CartViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+            public CartViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_items_layout,parent,false);
                 CartViewHolder holder = new CartViewHolder(view);
                 return holder;

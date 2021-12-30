@@ -12,9 +12,10 @@ import com.example.adminapp.R;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
-    public TextView txtProductName, txtProductDescription, txtProductPrice;
+    public TextView txtProductName, txtProductDescription, txtProductPrice,editBtn;
     public ImageView imageView;
     public ItemClickListner listner;
+
 
 
     public ProductViewHolder(View itemView)

@@ -12,12 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AdminApp">
-        <activity android:name=".AdminHomeActivity"></activity>
+        <activity android:name=".AdminHomeActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity" />
-        <activity android:name=".CheckNewSellersProductsActivity" />
-        <activity android:name=".UserProductsActivity" />
-        <activity android:name=".NewOrdersActivity" />
-        <activity android:name=".MaintainProductsActivity" />
+        <activity android:name=".CheckNewSellersProductsActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".UserProductsActivity"
+            android:parentActivityName=".NewOrdersActivity"/>
+        <activity android:name=".NewOrdersActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".MaintainProductsActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

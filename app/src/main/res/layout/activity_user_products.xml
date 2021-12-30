@@ -6,23 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".UserProductsActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/r5">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <RelativeLayout
         android:id="@+id/r4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@+id/r5"
         android:background="@color/colorPrimaryDark"
         android:layout_alignParentTop="true">
-
-        <TextView
-            android:id="@+id/r2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Products"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
-            />
 
     </RelativeLayout>
 

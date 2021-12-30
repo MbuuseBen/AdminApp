@@ -10,7 +10,9 @@ import android.widget.Toast;
 
 import android.content.Intent;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
@@ -66,12 +67,23 @@ public class MaintainProductsActivity extends AppCompatActivity {
                 deleteThisProduct();
             }
         });
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.topAppBar);
+        mToolbar.setTitle("Edit Seller Products");
+        setSupportActionBar(mToolbar);
+
+
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
     }
 
     private void deleteThisProduct() {
         productsRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onComplete(@NonNull @NotNull Task<Void> task) {
+            public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(MaintainProductsActivity.this,"The Product is deleted successfully",Toast.LENGTH_SHORT).show();
 
 
@@ -109,7 +121,7 @@ public class MaintainProductsActivity extends AppCompatActivity {
 
             productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
-                public void onComplete(@NonNull @NotNull Task<Void> task) {
+                public void onComplete(@NonNull  Task<Void> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(MaintainProductsActivity.this, "Changes applied successfully", Toast.LENGTH_LONG);
 
@@ -127,7 +139,7 @@ public class MaintainProductsActivity extends AppCompatActivity {
     private void displaySPecificProductInfo() {
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     String pName = snapshot.child("pname").getValue().toString();
                     String pPrice = snapshot.child("price").getValue().toString();
@@ -143,7 +155,7 @@ public class MaintainProductsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+            public void onCancelled(@NonNull  DatabaseError error) {
 
             }
         });

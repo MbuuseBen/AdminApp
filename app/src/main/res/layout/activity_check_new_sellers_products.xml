@@ -6,24 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".CheckNewSellersProductsActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/r5">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <RelativeLayout
-        android:id="@+id/r5"
+        android:id="@+id/r4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_below="@+id/r5"
         android:background="@color/colorPrimaryDark"
         android:layout_alignParentTop="true">
 
-        <TextView
-            android:id="@+id/r6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Approve New Seller Products "
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
-            />
 
     </RelativeLayout>
 
@@ -34,5 +40,14 @@
         android:layout_below="@+id/r5"
         >
     </androidx.recyclerview.widget.RecyclerView>
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimaryDark"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout >

@@ -69,21 +69,19 @@
         />
 
 
-
     <Button
         android:id="@+id/admin_logout_btn"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_alignParentBottom="true"
-        android:text="Logout"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="25dp"
-        android:textSize="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Logout"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:background="@color/colorPrimaryDark"
-        />
+        android:textSize="20dp" />
 
 
 

@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private String parentDbName = "Admins";
     private CheckBox chkBoxRememberMe;
+    boolean isPhoneValid, isPasswordValid;
 
 
     @Override
@@ -54,7 +56,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                LoginAdmin();
+               // LoginAdmin();
+                SetValidation();
             }
         });
 
@@ -75,6 +78,36 @@ public class LoginActivity extends AppCompatActivity {
                 loadingBar.show();
             }
         }
+    }
+
+    public void SetValidation() {
+        // Check for a valid email address.
+        if (InputPhoneNumber.getText().toString().isEmpty()) {
+            InputPhoneNumber.setError(getResources().getString(R.string.phone_error));
+            isPhoneValid = false;
+        } else if (!Patterns.PHONE.matcher(InputPhoneNumber.getText().toString()).matches()) {
+            InputPhoneNumber.setError(getResources().getString(R.string.error_invalid_phone));
+            isPhoneValid = false;
+        } else  {
+            isPhoneValid = true;
+        }
+
+        // Check for a valid password.
+        if (InputPassword.getText().toString().isEmpty()) {
+            InputPassword.setError(getResources().getString(R.string.password_error));
+            isPasswordValid = false;
+        } else if (InputPassword.getText().length() < 6) {
+            InputPassword.setError(getResources().getString(R.string.error_invalid_password));
+            isPasswordValid = false;
+        } else  {
+            isPasswordValid = true;
+        }
+
+        if (isPhoneValid && isPasswordValid) {
+            LoginAdmin();
+
+        }
+
     }
 
     private void AllowAccess(final String phone, final String password)
