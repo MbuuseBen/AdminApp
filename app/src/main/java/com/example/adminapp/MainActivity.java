@@ -1,15 +1,20 @@
 package com.example.adminapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import io.paperdb.Paper;
 
@@ -17,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button LogoutBtn, CheckOrdersBtn, maintainProductsBtn, approveSellerProductsBtn;
 
-    private LinearLayout checkNewOrders,editProducts,addACategory,showStatistics,Approveproducts,imageAds;
+    private LinearLayout checkNewOrders,editProducts,addACategory,showStatistics,Approveproducts,feedback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         addACategory = findViewById(R.id.addCategoryPic);
         Approveproducts = findViewById(R.id.addASupplierPic);
         showStatistics = findViewById(R.id.showStatisticsPic);
-        imageAds = findViewById(R.id.putAnAdPic);
+        feedback = findViewById(R.id.FeedBackPic);
 
         editProducts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, FeedbackActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
         Approveproducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,4 +92,45 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            // By using switch we can easily get
+            // the selected fragment
+            // by using there id.
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
+                case R.id.seller_home:
+
+
+
+                    Intent home = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(home);
+
+                    break;
+
+
+                case R.id.seller_logout:
+
+
+                    Paper.book().destroy();
+                    FirebaseAuth.getInstance().signOut();
+
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                    break;
+            }
+            // It will help to replace the
+            // one fragment to other.
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.fragment_container, selectedFragment)
+//                    .commit();
+            return true;
+        }
+    };
+
 }

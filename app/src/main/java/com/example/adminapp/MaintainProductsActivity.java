@@ -40,7 +40,7 @@ public class MaintainProductsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_maintain_products);
 
         productID = getIntent().getStringExtra("pid");
-        productsRef = FirebaseDatabase.getInstance().getReference().child("Products").child(productID);
+        productsRef = FirebaseDatabase.getInstance().getReference().child("products").child(productID);
 
 
 

@@ -220,6 +220,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 Prevalent.currentOnlineAdmin = usersData;
                                 startActivity(intent);
+                                finish();
                             }
 
                         }

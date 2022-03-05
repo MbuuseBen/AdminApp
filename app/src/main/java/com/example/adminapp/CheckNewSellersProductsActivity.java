@@ -47,7 +47,7 @@ public class CheckNewSellersProductsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_check_new_sellers_products);
 
 
-        unverifiedProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        unverifiedProductsRef = FirebaseDatabase.getInstance().getReference().child("products");
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);

@@ -42,7 +42,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
 
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("products");
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
