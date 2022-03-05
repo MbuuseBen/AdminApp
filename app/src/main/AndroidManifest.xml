@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AdminApp">
         <activity
             android:name=".FeedbackActivity"
-            android:exported="false" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AdminHomeActivity"
             android:parentActivityName=".MainActivity" />

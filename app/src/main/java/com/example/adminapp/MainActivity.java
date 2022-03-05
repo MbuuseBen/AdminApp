@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
 //        LogoutBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -103,10 +106,8 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.seller_home:
 
-
-
-                    Intent home = new Intent(MainActivity.this, MainActivity.class);
-                    startActivity(home);
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(intent);
 
                     break;
 
@@ -117,18 +118,13 @@ public class MainActivity extends AppCompatActivity {
                     Paper.book().destroy();
                     FirebaseAuth.getInstance().signOut();
 
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                    Intent logout = new Intent(MainActivity.this, LoginActivity.class);
+                    logout.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(logout);
                     finish();
                     break;
             }
-            // It will help to replace the
-            // one fragment to other.
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.fragment_container, selectedFragment)
-//                    .commit();
+
             return true;
         }
     };
