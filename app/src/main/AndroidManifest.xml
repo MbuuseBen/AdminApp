@@ -13,6 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AdminApp">
         <activity
+            android:name=".StatusSelection"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Orders.PendingOrders"
+            android:parentActivityName=".StatusSelection"
+            android:exported="false" />
+        <activity
+            android:name=".Orders.ConfirmedOrders"
+            android:parentActivityName=".StatusSelection"
+            android:exported="false" />
+        <activity
+            android:name=".OrderDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".NewOrdersActivity" />
+        <activity
             android:name=".FeedbackActivity"
             android:parentActivityName=".MainActivity" />
         <activity

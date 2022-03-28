@@ -2,21 +2,23 @@ package com.example.adminapp.Model;
 
 public class AdminOrders {
 
-    private String firstname, lastname, phone, address, city, State, date, time;
+    private String firstname, lastname, phone, address, city, state, date, time,orderid,specialText;
            private int  totalAmount;
 
     public AdminOrders() {
     }
 
-    public AdminOrders(String firstname, String lastname, String phone, String address, String city, String state, String date, String time, int totalAmount) {
+    public AdminOrders(String firstname, String lastname, String phone, String address, String city, String state, String date, String time, String orderid, String specialText, int totalAmount) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;
         this.address = address;
         this.city = city;
-        State = state;
+        this.state = state;
         this.date = date;
         this.time = time;
+        this.orderid = orderid;
+        this.specialText = specialText;
         this.totalAmount = totalAmount;
     }
 
@@ -61,11 +63,11 @@ public class AdminOrders {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getDate() {
@@ -82,6 +84,22 @@ public class AdminOrders {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(String orderid) {
+        this.orderid = orderid;
+    }
+
+    public String getSpecialText() {
+        return specialText;
+    }
+
+    public void setSpecialText(String specialText) {
+        this.specialText = specialText;
     }
 
     public int getTotalAmount() {

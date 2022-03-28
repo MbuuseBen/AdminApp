@@ -1,14 +1,15 @@
 package com.example.adminapp.Model;
 
 public class Feedback {
-    private String subject,message;
+    private String subject,message,lastname;
 
     public Feedback() {
     }
 
-    public Feedback(String subject, String message) {
+    public Feedback(String subject, String message, String lastname) {
         this.subject = subject;
         this.message = message;
+        this.lastname = lastname;
     }
 
     public String getSubject() {
@@ -25,5 +26,13 @@ public class Feedback {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 }

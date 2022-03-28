@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -33,6 +34,7 @@ import io.paperdb.Paper;
 public class FeedbackActivity extends AppCompatActivity {
     private RecyclerView feedbackList;
     private DatabaseReference reference;
+    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,11 @@ public class FeedbackActivity extends AppCompatActivity {
 
         reference = FirebaseDatabase.getInstance().getReference().child("Feedback");
         feedbackList = findViewById(R.id.feedback_list);
+
+
+        feedbackList.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        feedbackList.setLayoutManager(layoutManager);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.topAppBar);
         mToolbar.setTitle("Feedback");
@@ -122,9 +129,9 @@ public class FeedbackActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull @NotNull FeedbackViewHolder holder, int i, @NonNull @NotNull Feedback model) {
 
 
-                holder.txtSubject.setText(model.getSubject());
-                holder.txtMessage.setText(model.getMessage());
-
+                holder.txtSubject.setText("Title : " +model.getSubject());
+                holder.txtMessage.setText("Message : " +model.getMessage());
+                holder.txtUser.setText("User : " +model.getLastname());
             }
 
             @NonNull

@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,14 +40,14 @@ public class NewOrdersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_orders);
 
-        orderRef= FirebaseDatabase.getInstance().getReference().child("Orders");
+        orderRef= FirebaseDatabase.getInstance().getReference().child("AdminOrders");
 
         ordersList = findViewById(R.id.orders_list);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
 
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.topAppBar);
-        mToolbar.setTitle("Orders Section");
+        mToolbar.setTitle("Pending Orders");
         setSupportActionBar(mToolbar);
 
 
@@ -68,23 +69,24 @@ public class NewOrdersActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder> adapter =
                 new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull @NotNull AdminOrdersViewHolder holder, int position, @NonNull @NotNull AdminOrders model) {
+                    protected void onBindViewHolder(@NonNull @NotNull AdminOrdersViewHolder holder, @SuppressLint("RecyclerView") int position, @NonNull @NotNull AdminOrders model) {
 
 
                         holder.userFirstName.setText("Name : "+model.getFirstname()+ " "+ model.getLastname());
                         holder.userPhoneNumber.setText("Phone : "+model.getPhone());
-                        holder.userTotalPrice.setText("Total Amount : "+ (new DecimalFormat("#,###")).format(Integer.valueOf(model.getTotalAmount())));
+                   //     holder.userTotalPrice.setText("Total Amount : "+ (new DecimalFormat("#,###")).format(Integer.valueOf(model.getTotalAmount())));
                         holder.userDateTime.setText("Orders at : "+model.getDate() + ""+ model.getTime());
-                        holder.userShippingAddress.setText("Address : "+model.getAddress());
-
+                      //  holder.userShippingAddress.setText("Address : "+model.getAddress());
+                        holder.orderId.setText("Orders id : "+model.getOrderid());
 
                         holder.ShowOrdersBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 String uID = getRef(position).getKey();
 
-                                Intent intent = new Intent(NewOrdersActivity.this, UserProductsActivity.class);
-                                intent.putExtra("uid", uID);
+                                Intent intent = new Intent(NewOrdersActivity.this, OrderDetailsActivity.class);
+                             //   intent.putExtra("uid", uID);
+                                intent.putExtra("orderID", model.getOrderid());
                                 startActivity(intent);
                             }
                         });
@@ -123,7 +125,7 @@ public class NewOrdersActivity extends AppCompatActivity {
                     @Override
                     public AdminOrdersViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
 
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout,parent,false);
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_layout1,parent,false);
                         return  new  AdminOrdersViewHolder(view);
                     }
                 };
@@ -135,7 +137,7 @@ public class NewOrdersActivity extends AppCompatActivity {
 
     public  static  class AdminOrdersViewHolder extends  RecyclerView.ViewHolder{
 
-        public TextView userFirstName, userPhoneNumber, userTotalPrice, userDateTime,userShippingAddress;
+        public TextView userFirstName, userPhoneNumber, userTotalPrice, userDateTime,userShippingAddress,orderId,State,specialText;
         public Button ShowOrdersBtn;
 
 
@@ -143,13 +145,23 @@ public class NewOrdersActivity extends AppCompatActivity {
         public  AdminOrdersViewHolder(View itemView){
             super((itemView));
 
+//            userFirstName = itemView.findViewById(R.id.order_user_name);
+//            userPhoneNumber = itemView.findViewById(R.id.order_phone_number);
+//            userTotalPrice = itemView.findViewById(R.id.order_total_price);
+//            userDateTime = itemView.findViewById(R.id.order_date_time);
+//            userShippingAddress= itemView.findViewById(R.id.order_address_city);
+//            ShowOrdersBtn = itemView.findViewById(R.id.show_order_products_btn);
+
+
             userFirstName = itemView.findViewById(R.id.order_user_name);
             userPhoneNumber = itemView.findViewById(R.id.order_phone_number);
             userTotalPrice = itemView.findViewById(R.id.order_total_price);
             userDateTime = itemView.findViewById(R.id.order_date_time);
             userShippingAddress= itemView.findViewById(R.id.order_address_city);
-            ShowOrdersBtn = itemView.findViewById(R.id.show_all_products_btn);
-
+            ShowOrdersBtn = itemView.findViewById(R.id.show_order_products_btn);
+            orderId= itemView.findViewById(R.id.order_id);
+//            State=itemView.findViewById(R.id.order_state);
+//            specialText = itemView.findViewById(R.id.order_user_specialText);
 
         }
 

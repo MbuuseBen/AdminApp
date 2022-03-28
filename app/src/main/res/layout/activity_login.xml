@@ -35,39 +35,77 @@
         android:layout_below="@+id/login_applogo"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="@drawable/input_design"
+        android:background="@drawable/input_design3"
+        android:drawableStart="@drawable/ic_baseline_phone_iphone_24"
         android:hint="Phone Number"
         android:inputType="number"
-        android:drawableStart="@drawable/ic_baseline_phone_iphone_24"
         android:padding="20dp"
         android:textColor="@color/colorPrimaryDark"
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="19sp" />
 
-
-    <EditText
-        android:id="@+id/login_password_input"
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/user_login_pw"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login_phone_number_input"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="6dp"
-        android:drawableStart="@drawable/ic_baseline_lock_open_24"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/input_design"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="20dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="19sp" />
+        android:layout_width="match_parent"
+        app:boxBackgroundMode="outline"
+        app:passwordToggleEnabled="true"
+        android:layout_below="@+id/login_phone_number_input">
+
+            <EditText
+                android:id="@+id/login_password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/login_phone_number_input"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/input_design3"
+                android:drawableStart="@drawable/ic_baseline_lock_open_24"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="20dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+                android:textSize="19sp" />
+
+<!--        <EditText-->
+<!--            android:id="@+id/user_login_password"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/user_login_email"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginRight="5dp"-->
+<!--            android:background="@drawable/input_design3"-->
+<!--            android:drawableStart="@drawable/ic_baseline_lock_open_24"-->
+<!--            android:hint="Password"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:padding="15dp" />-->
+    </com.google.android.material.textfield.TextInputLayout>
+<!--    <EditText-->
+<!--        android:id="@+id/login_password_input"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/login_phone_number_input"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginTop="6dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        android:background="@drawable/input_design"-->
+<!--        android:drawableStart="@drawable/ic_baseline_lock_open_24"-->
+<!--        android:hint="Password"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:padding="20dp"-->
+<!--        android:textColor="@color/colorPrimaryDark"-->
+<!--        android:textColorHint="@color/colorPrimaryDark"-->
+<!--        android:textSize="19sp" />-->
 
     <LinearLayout
         android:id="@+id/linear_layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/login_password_input"
+        android:layout_below="@+id/user_login_pw"
         android:layout_marginTop="5dp"
         >
 

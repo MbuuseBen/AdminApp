@@ -11,7 +11,7 @@ import com.example.adminapp.R;
 
 public class FeedbackViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
 
-    public TextView txtSubject, txtMessage;
+    public TextView txtSubject, txtMessage,txtUser;
     private ItemClickListner itemClickListner;
 
 
@@ -20,6 +20,8 @@ public class FeedbackViewHolder extends RecyclerView.ViewHolder  implements View
 
         txtSubject = itemView.findViewById(R.id.subject);
         txtMessage = itemView.findViewById(R.id.message);
+        txtMessage = itemView.findViewById(R.id.message);
+        txtUser = itemView.findViewById(R.id.User);
 
     }
 
